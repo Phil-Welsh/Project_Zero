@@ -1,1 +1,18 @@
 /* Phil Welsh */
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#progressBar {
+  width: 1%;
+  height: 30px;
+  background-color: green;
+}
+
+#progressBarBackground {
+    width: 80%;
+    background-color: grey;
+  }

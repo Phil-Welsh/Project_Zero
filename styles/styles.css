@@ -6,13 +6,12 @@
     box-sizing: border-box;
 }
 
-#progressBar {
-  width: 1%;
-  height: 30px;
-  background-color: green;
+#progressBarBackground {
+  width: 100%;
+  background-color: red;
 }
 
-#progressBarBackground {
-    width: 80%;
-    background-color: grey;
+#progressBar {
+  height: 30px;
+  background-color: green;
   }

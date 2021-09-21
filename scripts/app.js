@@ -20,15 +20,19 @@ const $hunger = $('#hungerLi')
 const $boredom = $('#boredomLi')
 const $sleepiness = $('#sleepinessLi')
 const $name = $('#nameLi')
-
-// Set global variables
-let snailHunger = 0
-let snailSleepiness = 0
-let snailBoredom = 0
-let snailProgress = 0
+const $statsName = $('#name')
 
 // Snail object
 const snail = {
+
+    snailProgress: 0,
+    progress: null,
+    snailHunger: 0,
+    hunger: null,
+    snailSleepiness: 0,
+    sleepiness: null,
+    snailBoredom: 0,
+    boredom: null,
 
     // Saves name input to object
     name: () => {
@@ -41,74 +45,92 @@ const snail = {
             }
             else {
                 $name.text("Name: " + snailName)
+                $statsName.text(snailName)
                 snail.hungerIncrease()
                 snail.sleepinessIncrease()
                 snail.boredomIncrease()
-                snail.progress()
+                snail.updateProgress()
             }
         },
 
     // Hunger counter that increases by 1 every 5 seconds
     hungerIncrease: () => {
-        window.setInterval(function() {
-            snailHunger += 1
-            $hunger.text("Hunger: " + snailHunger)},
-            5000)
-        },
+        snail.hunger = setInterval(function() {
+            if (snail.snailHunger >= 10) {
+                alert(`${snailName} died from hunger! :(`)
+                clearInterval(snail.hunger)
+        } else {
+            snail.snailHunger += 1
+            $hunger.text("Hunger: " + snail.snailHunger)
+            }
+        }, 5000)
+    },
 
     // Sleepiness counter that increases by 1 every 5 seconds
     sleepinessIncrease: () => {
-        window.setInterval(function() {
-            snailSleepiness += 1
-            $sleepiness.text("Sleepiness: " + snailSleepiness)},
-            5000)
-        },
+        snail.sleepiness = setInterval(function() {
+            if (snail.snailSleepiness >= 10) {
+                alert(`${snailName} died from sleepiness! :(`)
+                clearInterval(snail.sleepiness)
+        } else {
+            snail.snailSleepiness += 1
+            $sleepiness.text("Sleepiness: " + snail.snailSleepiness)
+            }
+        }, 5000)
+    },
 
     // Boredom counter that increases by 1 every 5 seconds
     boredomIncrease: () => {
-        window.setInterval(function() {
-            snailBoredom += 1
-            $boredom.text("Boredom: " + snailBoredom)},
-            5000)
+        snail.boredom = setInterval(function() {
+            if (snail.snailBoredom >= 10) {
+                alert(`${snailName} died from boredom! :(`)
+                clearInterval(snail.boredom)
+        } else {
+            snail.snailBoredom += 1
+            $boredom.text("Boredom: " + snail.snailBoredom)
+            }
+        }, 5000)
     },
 
     // Hunger counter that decreases by 1 every time "Eat" button is clicked
     hungerDecrease: () => {
-        if (snailHunger > 0) {
-        snailHunger -= 1
-        $hunger.text("Hunger: " + snailHunger)
+        if (snail.snailHunger > 0) {
+        snail.snailHunger -= 1
+        $hunger.text("Hunger: " + snail.snailHunger)
         }
     },
 
     // Sleepiness counter that decreases by 1 every time "Set up camp" button is clicked
     sleepinessDecrease: () => {
-        if (snailSleepiness > 0) {
-        snailSleepiness -= 1
-        $sleepiness.text("Sleepiness: " + snailSleepiness)
+        if (snail.snailSleepiness > 0) {
+        snail.snailSleepiness -= 1
+        $sleepiness.text("Sleepiness: " + snail.snailSleepiness)
         }
     },
 
     // Boredom counter that decreases by 1 every time "Play cards" button is clicked
     boredomDecrease: () => {
-        if (snailBoredom > 0) {
-        snailBoredom -= 1
-        $boredom.text("Boredom: " + snailBoredom)
+        if (snail.snailBoredom > 0) {
+        snail.snailBoredom -= 1
+        $boredom.text("Boredom: " + snail.snailBoredom)
         }
     },
 
-    // Progress counter that increases by 5 every 5 seconds
-    progress: () => {
-            window.setInterval(function() {
-                if (snailProgress >= 100) {
-                    alert(`${snailName} completed the journey!`)
-                    clearInterval(window)
-                } else
-                snailProgress += 5
-                var elem = document.getElementById("progressBar")
-                elem.style.width = snailProgress + "%"
-            }, 500)
-        }
+    updateProgress: () => {
+        snail.progress = setInterval(function() {
+            if (snail.snailProgress >= 100) {
+                alert(`${snailName} completed the journey!`)
+                clearInterval(snail.progress)
+        } else {
+            snail.snailProgress += 5
+            var elem = document.getElementById("progressBar")
+            elem.style.width = snail.snailProgress + "%"
+            }
+        }, 10000)
+    }
 }
+
+
 
 // Add event listeners
 $nameInputButton.on('click', snail.name)

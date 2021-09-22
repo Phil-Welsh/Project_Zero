@@ -12,6 +12,12 @@ const $sleepiness = $('#sleepinessLi')
 const $name = $('#nameLi')
 const $statsName = $('#name')
 const $replay = $('#replay')
+const $statsContainer = $('#statsContainer')
+const $snailContainer = $('#snailContainer')
+const $buttonContainer = $('#buttonContainer')
+const $progressBarContainer = $('#progressBarContainer')
+const $nameContainer = $('#nameContainer')
+const $endGameContainer = $('#endGameContainer')
 
 // Snail object
 const snail = {
@@ -59,7 +65,7 @@ const snail = {
             $hunger.text("Hunger: " + snail.snailHunger)
             snail.appearance()
             }
-        }, 5000)
+        }, 3000)
     },
 
     // Sleepiness counter that increases by 1 every 5 seconds
@@ -131,7 +137,7 @@ const snail = {
             var elem = document.getElementById("progressBar")
             elem.style.width = snail.snailProgress + "%"
             }
-            }, 500)
+            }, 3000)
         },
 
     appearance: () => {
@@ -141,20 +147,16 @@ const snail = {
 }
 
 function displayGame() {
-    var elem = document.getElementById("statsContainer")
-    elem.style.display = "initial"
+    $statsContainer.show()
 
-    var elem = document.getElementById("snailContainer")
-    elem.style.display = "initial"
+    $snailContainer.show()
 
-    var elem = document.getElementById("progressBarContainer")
-    elem.style.display = "flex"
+    $progressBarContainer.css('display', 'flex')
+    $progressBarContainer.show()
 
-    var elem = document.getElementById("buttonContainer")
-    elem.style.display = "initial"
+    $buttonContainer.show()
 
-    var elem = document.getElementById("nameContainer")
-    elem.style.display = "none"
+    $nameContainer.hide()
 }
 
 // Calls function to hide/show appropriate containers, and displays reason for game end
@@ -162,31 +164,32 @@ function endGame(reason) {
     endGameHideShow()
     if (reason == "progress") {
         $replay.text("Hooray! " + $nameInput.val() + " made it all the way to the pile of food! Well done!")
-    } else
-    // var elem = document.getElementById("replay")
-    $replay.text("Oh no! " + $nameInput.val() + " died from " + reason + "!")
+    } else {
+    $replay.text("Oh no! " + $nameInput.val() + " died from " + reason + "!") }
+    addReplayButton()
+}
+
+function addReplayButton() {
+    const $replayButton = $("<div><button id = 'replayButton'>Play again?</button></div>")
+    $replayButton.on('click', function() {
+        location.reload()
+    })
+    $replay.append($replayButton)
 }
 
 // Hides the gameplay containers and shows the end game container
 function endGameHideShow() {
-    var elem = document.getElementById("statsContainer")
-    elem.style.display = "none"
+    $statsContainer.hide()
 
-    var elem = document.getElementById("snailContainer")
-    elem.style.display = "none"
+    $snailContainer.hide()
 
-    var elem = document.getElementById("progressBarContainer")
-    elem.style.display = "none"
+    $progressBarContainer.hide()
 
-    var elem = document.getElementById("buttonContainer")
-    elem.style.display = "none"
+    $buttonContainer.hide()
 
-    var elem = document.getElementById("nameContainer")
-    elem.style.display = "none"
+    $nameContainer.hide()
 
-    $('#endGameContainer').show()
-    // var elem = document.getElementById("endGameContainer")
-    // elem.style.display = "flex"
+    $endGameContainer.show()
 }
 
 // Add event listeners

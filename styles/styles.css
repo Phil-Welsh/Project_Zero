@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+body {
+  background-image: url("/assets/background.jpeg")
+}
+
 #progressBarBackground {
   width: 100%;
   background-color: red;
@@ -15,3 +19,50 @@
   height: 30px;
   background-color: green;
   }
+
+#centerPiece {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#statsContainer {
+  display: none;
+  overflow-wrap: break-word;
+  max-width: 15%;
+  padding: 10px;
+  margin: 10px;
+}
+
+#snailContainer {
+  display: none;
+}
+
+#progressBarContainer {
+  display: none;
+}
+
+#buttonContainer {
+  display: none;
+}
+
+#nameContainer {
+  padding: 10px;
+  margin: 10px;
+}
+
+#titleContainer {
+  padding: 10px;
+  margin: 10px;
+  justify-content: center;
+  text-align: center;
+}
+
+#snail {
+  max-width: 250px;
+  max-height: 250px;
+}
+
+.btn {
+  list-style: none;
+}

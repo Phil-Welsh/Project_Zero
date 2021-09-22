@@ -50,20 +50,41 @@ const snail = {
                 snail.sleepinessIncrease()
                 snail.boredomIncrease()
                 snail.updateProgress()
+                snail.displayGame()
             }
         },
+
+    displayGame: () => {
+        var elem = document.getElementById("statsContainer")
+        elem.style.display = "initial"
+
+        var elem = document.getElementById("snailContainer")
+        elem.style.display = "initial"
+
+        var elem = document.getElementById("progressBarContainer")
+        elem.style.display = "initial"
+
+        var elem = document.getElementById("buttonContainer")
+        elem.style.display = "initial"
+
+        var elem = document.getElementById("nameContainer")
+        elem.style.display = "none"
+    },
 
     // Hunger counter that increases by 1 every 5 seconds
     hungerIncrease: () => {
         snail.hunger = setInterval(function() {
             if (snail.snailHunger >= 10) {
                 alert(`${snailName} died from hunger! :(`)
+                clearInterval(snail.progress)
                 clearInterval(snail.hunger)
+                clearInterval(snail.boredom)
+                clearInterval(snail.sleepiness)
         } else {
             snail.snailHunger += 1
             $hunger.text("Hunger: " + snail.snailHunger)
             }
-        }, 5000)
+        }, 1000)
     },
 
     // Sleepiness counter that increases by 1 every 5 seconds
@@ -72,11 +93,14 @@ const snail = {
             if (snail.snailSleepiness >= 10) {
                 alert(`${snailName} died from sleepiness! :(`)
                 clearInterval(snail.sleepiness)
+                clearInterval(snail.progress)
+                clearInterval(snail.hunger)
+                clearInterval(snail.boredom)
         } else {
             snail.snailSleepiness += 1
             $sleepiness.text("Sleepiness: " + snail.snailSleepiness)
             }
-        }, 5000)
+        }, 3000)
     },
 
     // Boredom counter that increases by 1 every 5 seconds
@@ -85,6 +109,9 @@ const snail = {
             if (snail.snailBoredom >= 10) {
                 alert(`${snailName} died from boredom! :(`)
                 clearInterval(snail.boredom)
+                clearInterval(snail.progress)
+                clearInterval(snail.hunger)
+                clearInterval(snail.sleepiness)
         } else {
             snail.snailBoredom += 1
             $boredom.text("Boredom: " + snail.snailBoredom)
@@ -121,16 +148,17 @@ const snail = {
             if (snail.snailProgress >= 100) {
                 alert(`${snailName} completed the journey!`)
                 clearInterval(snail.progress)
+                clearInterval(snail.hunger)
+                clearInterval(snail.boredom)
+                clearInterval(snail.sleepiness)
         } else {
             snail.snailProgress += 5
             var elem = document.getElementById("progressBar")
             elem.style.width = snail.snailProgress + "%"
             }
-        }, 10000)
+        }, 3000)
     }
 }
-
-
 
 // Add event listeners
 $nameInputButton.on('click', snail.name)

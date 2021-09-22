@@ -7,7 +7,8 @@
 }
 
 body {
-  background-image: url("/assets/background.jpeg")
+  background-image: url("/assets/background.jpeg");
+  font-family: 'Courier New', Courier, monospace;
 }
 
 #progressBarBackground {
@@ -29,9 +30,7 @@ body {
 #statsContainer {
   display: none;
   overflow-wrap: break-word;
-  max-width: 15%;
-  padding: 10px;
-  margin: 10px;
+  max-width: 30%;
 }
 
 #snailContainer {
@@ -64,15 +63,27 @@ body {
 }
 
 #snail {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 150px;
+  max-height: 150px;
 }
 
 #nameInputButton {
   margin: 10px;
 }
 
+#endGameContainer {
+  display: none;
+  text-align: center;
+  margin: auto;
+  width: 60%;
+}
+
 .btn {
   list-style: none;
-  margin: 10px;
+  margin: 5px;
+}
+
+.statsLi {
+  list-style: none;
+  margin: 5px;
 }

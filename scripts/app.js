@@ -1,14 +1,5 @@
 // Phil Welsh
 
-// Functions I need
-// 2. Push up title after hitting "Let's go!"
-//          a. Hide naming box and unhide game
-// 3. +1 on stats every 30 seconds
-// 4. -1 on stats every time respective button is pushed
-// 5. Progress bar that increases every 30 seconds
-// 6. Replay button when stats get to 10
-// 7. Animate snail getting fuzzier as he gets hungrier
-
 // Set jQuery variables
 const $nameInputButton = $('#nameInputButton')
 const $eatButton = $('#eatButton')
@@ -20,6 +11,7 @@ const $boredom = $('#boredomLi')
 const $sleepiness = $('#sleepinessLi')
 const $name = $('#nameLi')
 const $statsName = $('#name')
+const $replay = $('#replay')
 
 // Snail object
 const snail = {
@@ -57,12 +49,11 @@ const snail = {
     hungerIncrease: () => {
         snail.hunger = setInterval(function() {
             if (snail.snailHunger >= 10) {
-                alert(`${snailName} died from hunger! :(`)
                 clearInterval(snail.progress)
                 clearInterval(snail.hunger)
                 clearInterval(snail.boredom)
                 clearInterval(snail.sleepiness)
-                location.reload()
+                endGame("hunger")
         } else {
             snail.snailHunger += 1
             $hunger.text("Hunger: " + snail.snailHunger)
@@ -75,12 +66,11 @@ const snail = {
     sleepinessIncrease: () => {
         snail.sleepiness = setInterval(function() {
             if (snail.snailSleepiness >= 10) {
-                alert(`${snailName} died from sleepiness! :(`)
                 clearInterval(snail.sleepiness)
                 clearInterval(snail.progress)
                 clearInterval(snail.hunger)
                 clearInterval(snail.boredom)
-                location.reload()
+                endGame("sleepiness")
         } else {
             snail.snailSleepiness += 1
             $sleepiness.text("Sleepiness: " + snail.snailSleepiness)
@@ -92,12 +82,11 @@ const snail = {
     boredomIncrease: () => {
         snail.boredom = setInterval(function() {
             if (snail.snailBoredom >= 10) {
-                alert(`${snailName} died from boredom! :(`)
                 clearInterval(snail.boredom)
                 clearInterval(snail.progress)
                 clearInterval(snail.hunger)
                 clearInterval(snail.sleepiness)
-                location.reload()
+                endGame("boredom")
         } else {
             snail.snailBoredom += 1
             $boredom.text("Boredom: " + snail.snailBoredom)
@@ -132,18 +121,17 @@ const snail = {
     updateProgress: () => {
         snail.progress = setInterval(function() {
             if (snail.snailProgress >= 100) {
-                alert(`${snailName} completed the journey!`)
                 clearInterval(snail.progress)
                 clearInterval(snail.hunger)
                 clearInterval(snail.boredom)
                 clearInterval(snail.sleepiness)
-                location.reload()
+                endGame("progress")
         } else {
             snail.snailProgress += 5
             var elem = document.getElementById("progressBar")
             elem.style.width = snail.snailProgress + "%"
             }
-            }, 3000)
+            }, 500)
         },
 
     appearance: () => {
@@ -151,12 +139,6 @@ const snail = {
         elem.style.filter = "blur(" + (snail.snailHunger/4) + "px)"
     }
 }
-
-// Add event listeners
-$nameInputButton.on('click', snail.name)
-$eatButton.on('click', snail.hungerDecrease)
-$setUpCampButton.on('click', snail.sleepinessDecrease)
-$playCardsButton.on('click', snail.boredomDecrease)
 
 function displayGame() {
     var elem = document.getElementById("statsContainer")
@@ -174,3 +156,41 @@ function displayGame() {
     var elem = document.getElementById("nameContainer")
     elem.style.display = "none"
 }
+
+// Calls function to hide/show appropriate containers, and displays reason for game end
+function endGame(reason) {
+    endGameHideShow()
+    if (reason == "progress") {
+        $replay.text("Hooray! " + $nameInput.val() + " made it all the way to the pile of food! Well done!")
+    } else
+    // var elem = document.getElementById("replay")
+    $replay.text("Oh no! " + $nameInput.val() + " died from " + reason + "!")
+}
+
+// Hides the gameplay containers and shows the end game container
+function endGameHideShow() {
+    var elem = document.getElementById("statsContainer")
+    elem.style.display = "none"
+
+    var elem = document.getElementById("snailContainer")
+    elem.style.display = "none"
+
+    var elem = document.getElementById("progressBarContainer")
+    elem.style.display = "none"
+
+    var elem = document.getElementById("buttonContainer")
+    elem.style.display = "none"
+
+    var elem = document.getElementById("nameContainer")
+    elem.style.display = "none"
+
+    $('#endGameContainer').show()
+    // var elem = document.getElementById("endGameContainer")
+    // elem.style.display = "flex"
+}
+
+// Add event listeners
+$nameInputButton.on('click', snail.name)
+$eatButton.on('click', snail.hungerDecrease)
+$setUpCampButton.on('click', snail.sleepinessDecrease)
+$playCardsButton.on('click', snail.boredomDecrease)

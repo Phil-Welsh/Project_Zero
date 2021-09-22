@@ -13,49 +13,47 @@
 </head>
 <body>
 
-<div id = "titleContainer">
-    <h1>Oregon Snail</h1>
-    <h3>Guide your snail across a dangerous landscape to reach a stockpile of food!</h3>
-</div>
-
-<div id = "centerPiece">
+    <div id = "titleContainer">
+        <h1>Oregon Snail</h1>
+        <h3>Guide your snail across a dangerous landscape to reach a stockpile of food!</h3>
+    </div>
 
     <div id = "nameContainer">
         <input type="text" id = "nameInput">
         <button id = "nameInputButton">Let's go!</button>
     </div>
 
-    <div id = "statsContainer">
-        <p>Make sure none of these get to 10 or <span id = "name"></span> dies!</p>
-        <ul>
-            <li id = "nameLi">Name: </li>
-            <li id = "sleepinessLi">Sleepiness: </li>
-            <li id = "boredomLi">Boredom: </li>
-            <li id = "hungerLi">Hunger: </li>
-        </ul>
+    <div id = "centerPiece">
+
+        <div id = "statsContainer">
+            <p>Make sure none of these get to 10 or <span id = "name"></span> dies!</p>
+            <ul>
+                <li class = "statsLi" id = "nameLi">Name: </li>
+                <li class = "statsLi" id = "sleepinessLi">Sleepiness: </li>
+                <li class = "statsLi" id = "boredomLi">Boredom: </li>
+                <li class = "statsLi" id = "hungerLi">Hunger: </li>
+            </ul>
+        </div>
+
+        <div id = "snailContainer">
+            <img id = "snail" src = "assets/snail.png">
+        </div>
+
+        <div id = "buttonContainer">
+            <ul>
+                <li class = "btn"><button id = "eatButton">Eat</button></li>
+                <li class = "btn"><button id = "setUpCampButton">Set up camp</button></li>
+                <li class = "btn"><button id = "playCardsButton">Play cards</button></li>
+            </ul>
+        </div>
+
     </div>
 
-    <div id = "snailContainer">
-        <img id = "snail" src = "assets/snail.jpeg">
+    <div id = "progressBarContainer">
+        <div id = "progressBarBackground">
+            <div id = "progressBar"></div>
+        </div>
     </div>
-
-    <div id = "buttonContainer">
-        <ul>
-            <li class = "btn"><button id = "eatButton">Eat</button></li>
-            <li class = "btn"><button id = "setUpCampButton">Set up camp</button></li>
-            <li class = "btn"><button id = "playCardsButton">Play cards</button></li>
-        </ul>
-    </div>
-
-</div>
-
-<div id = "progressBarContainer">
-    <div id = "progressBarBackground">
-        <div id = "progressBar"></div>
-    </div>
-</div>
 
 </body>
 </html>
-
-

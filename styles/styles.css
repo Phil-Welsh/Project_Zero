@@ -11,7 +11,7 @@ body {
 }
 
 #progressBarBackground {
-  width: 100%;
+  width: 60%;
   background-color: red;
 }
 
@@ -40,6 +40,8 @@ body {
 
 #progressBarContainer {
   display: none;
+  justify-content: center;
+  align-items: center;
 }
 
 #buttonContainer {
@@ -49,6 +51,9 @@ body {
 #nameContainer {
   padding: 10px;
   margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #titleContainer {
@@ -59,10 +64,15 @@ body {
 }
 
 #snail {
-  max-width: 250px;
-  max-height: 250px;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+#nameInputButton {
+  margin: 10px;
 }
 
 .btn {
   list-style: none;
+  margin: 10px;
 }

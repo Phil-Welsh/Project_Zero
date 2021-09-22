@@ -15,7 +15,6 @@ const $eatButton = $('#eatButton')
 const $setUpCampButton = $('#setUpCampButton')
 const $playCardsButton = $('#playCardsButton')
 const $nameInput = $('#nameInput')
-const $snailImg = $('#snail')
 const $hunger = $('#hungerLi')
 const $boredom = $('#boredomLi')
 const $sleepiness = $('#sleepinessLi')
@@ -50,26 +49,9 @@ const snail = {
                 snail.sleepinessIncrease()
                 snail.boredomIncrease()
                 snail.updateProgress()
-                snail.displayGame()
+                displayGame()
             }
         },
-
-    displayGame: () => {
-        var elem = document.getElementById("statsContainer")
-        elem.style.display = "initial"
-
-        var elem = document.getElementById("snailContainer")
-        elem.style.display = "initial"
-
-        var elem = document.getElementById("progressBarContainer")
-        elem.style.display = "initial"
-
-        var elem = document.getElementById("buttonContainer")
-        elem.style.display = "initial"
-
-        var elem = document.getElementById("nameContainer")
-        elem.style.display = "none"
-    },
 
     // Hunger counter that increases by 1 every 5 seconds
     hungerIncrease: () => {
@@ -80,11 +62,13 @@ const snail = {
                 clearInterval(snail.hunger)
                 clearInterval(snail.boredom)
                 clearInterval(snail.sleepiness)
+                location.reload()
         } else {
             snail.snailHunger += 1
             $hunger.text("Hunger: " + snail.snailHunger)
+            snail.appearance()
             }
-        }, 1000)
+        }, 5000)
     },
 
     // Sleepiness counter that increases by 1 every 5 seconds
@@ -96,11 +80,12 @@ const snail = {
                 clearInterval(snail.progress)
                 clearInterval(snail.hunger)
                 clearInterval(snail.boredom)
+                location.reload()
         } else {
             snail.snailSleepiness += 1
             $sleepiness.text("Sleepiness: " + snail.snailSleepiness)
             }
-        }, 3000)
+        }, 5000)
     },
 
     // Boredom counter that increases by 1 every 5 seconds
@@ -112,6 +97,7 @@ const snail = {
                 clearInterval(snail.progress)
                 clearInterval(snail.hunger)
                 clearInterval(snail.sleepiness)
+                location.reload()
         } else {
             snail.snailBoredom += 1
             $boredom.text("Boredom: " + snail.snailBoredom)
@@ -151,12 +137,18 @@ const snail = {
                 clearInterval(snail.hunger)
                 clearInterval(snail.boredom)
                 clearInterval(snail.sleepiness)
+                location.reload()
         } else {
             snail.snailProgress += 5
             var elem = document.getElementById("progressBar")
             elem.style.width = snail.snailProgress + "%"
             }
-        }, 3000)
+            }, 3000)
+        },
+
+    appearance: () => {
+        var elem = document.getElementById("snail")
+        elem.style.filter = "blur(" + (snail.snailHunger/4) + "px)"
     }
 }
 
@@ -165,3 +157,20 @@ $nameInputButton.on('click', snail.name)
 $eatButton.on('click', snail.hungerDecrease)
 $setUpCampButton.on('click', snail.sleepinessDecrease)
 $playCardsButton.on('click', snail.boredomDecrease)
+
+function displayGame() {
+    var elem = document.getElementById("statsContainer")
+    elem.style.display = "initial"
+
+    var elem = document.getElementById("snailContainer")
+    elem.style.display = "initial"
+
+    var elem = document.getElementById("progressBarContainer")
+    elem.style.display = "flex"
+
+    var elem = document.getElementById("buttonContainer")
+    elem.style.display = "initial"
+
+    var elem = document.getElementById("nameContainer")
+    elem.style.display = "none"
+}

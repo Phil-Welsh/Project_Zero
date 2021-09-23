@@ -22,6 +22,7 @@ const $endGameContainer = $('#endGameContainer')
 // Snail object
 const snail = {
 
+    // Set properties for use in methods below
     snailProgress: 0,
     progress: null,
     snailHunger: 0,
@@ -31,71 +32,102 @@ const snail = {
     snailBoredom: 0,
     boredom: null,
 
-// Method that saves name input, makes sure name is valid, and calls functions that display the game/start other counters
     name: () => {
+
+        // Saves name input to variable
         snailName = $nameInput.val()
+
+        // Logic to make sure name is valid
         if (snailName.length == 0) {
             alert("Snail name can't be empty!")
             }
             else if (snailName.length > 20) {
-                alert("Please choose a shorter name!")
-            }
+                    alert("Please choose a shorter name!")
+                }
             else {
+
+                // Sets name for statsContainer
                 $name.text("Name: " + snailName)
                 $statsName.text(snailName)
+
+                // Calls methods that start the game
                 snail.hungerIncrease()
                 snail.sleepinessIncrease()
                 snail.boredomIncrease()
                 snail.updateProgress()
+
+                // Display game objects
                 displayGame()
             }
         },
 
-    // Function that increases hunger count
     hungerIncrease: () => {
+
+        // Method that increases hunger at a specified increment
         snail.hunger = setInterval(function() {
+
+            // If hunger limit is reached, it clears all other setIntervals
             if (snail.snailHunger >= 9) {
-                // If hunger limit is reached, it clears all other setIntervals
                 clearInterval(snail.progress)
                 clearInterval(snail.hunger)
                 clearInterval(snail.boredom)
                 clearInterval(snail.sleepiness)
+
                 // Ends the game and passes the hunger parameter
                 endGame("hunger")
-        } else {
+
+            } else {
+
+            // If limit is not reached, add 1 to the count
             snail.snailHunger += 1
             $hunger.text("Hunger: " + snail.snailHunger)
+
+            // Calls method to make snail blurrier as it gets hungrier
             snail.appearance()
             }
         }, 50000)
     },
 
-    // Sleepiness counter that increases by 1 every 5 seconds
     sleepinessIncrease: () => {
+
+        // Method that increases sleepiness at a specified increment
         snail.sleepiness = setInterval(function() {
+
+            // If sleepiness limit is reached, it clears all other setIntervals
             if (snail.snailSleepiness >= 9) {
                 clearInterval(snail.sleepiness)
                 clearInterval(snail.progress)
                 clearInterval(snail.hunger)
                 clearInterval(snail.boredom)
+
+                // Ends the game and passes sleepiness parameter
                 endGame("sleepiness")
-        } else {
+            } else {
+
+            // If limit is not reached, add 1 to the count
             snail.snailSleepiness += 1
             $sleepiness.text("Sleepiness: " + snail.snailSleepiness)
             }
         }, 50000)
     },
 
-    // Boredom counter that increases by 1 every 5 seconds
     boredomIncrease: () => {
+
+        // Method that increases boredom at a specific increment
         snail.boredom = setInterval(function() {
+
+            // If boredom limit is reached, it clears all other setIntervals
             if (snail.snailBoredom >= 9) {
                 clearInterval(snail.boredom)
                 clearInterval(snail.progress)
                 clearInterval(snail.hunger)
                 clearInterval(snail.sleepiness)
+
+                // Ends the game and passes boredom parameter
                 endGame("boredom")
-        } else {
+            } else {
+
+            // If limit is not reached, add 1 to the count
             snail.snailBoredom += 1
             $boredom.text("Boredom: " + snail.snailBoredom)
             }
@@ -127,14 +159,23 @@ const snail = {
     },
 
     updateProgress: () => {
+
+        // Progress counter that runs at specified increment
         snail.progress = setInterval(function() {
+
+            // If progress reaches 100, clear all other setIntervals
             if (snail.snailProgress >= 100) {
                 clearInterval(snail.progress)
                 clearInterval(snail.hunger)
                 clearInterval(snail.boredom)
                 clearInterval(snail.sleepiness)
+
+                // Ends the game and passes parameter
                 endGame("progress")
+
         } else {
+
+            // If limit is not reached, add to progress and increase bar width
             snail.snailProgress += 5
             var elem = document.getElementById("progressBar")
             elem.style.width = snail.snailProgress + "%"
@@ -142,12 +183,14 @@ const snail = {
             }, 50000)
         },
 
+    // Method called by hungerIncrease method that makes snail blurrier as it gets hungrier
     appearance: () => {
         var elem = document.getElementById("snail")
         elem.style.filter = "blur(" + (snail.snailHunger/4) + "px)"
     }
 }
 
+// Function called by snail.name to hide/show appropriate containers
 function displayGame() {
     $statsContainer.show()
 
@@ -161,7 +204,7 @@ function displayGame() {
     $nameContainer.hide()
 }
 
-// Calls function to hide/show appropriate containers, and displays reason for game end
+// Function that hides/shows appropriate containers, then displays reason for game end and calls addReplayButton function
 function endGame(reason) {
     endGameHideShow()
     if (reason == "progress") {
@@ -171,6 +214,7 @@ function endGame(reason) {
     addReplayButton()
 }
 
+// Function that adds replay button div, gives it ability to reload page, and appends it
 function addReplayButton() {
     const $replayButton = $("<div><button id = 'replayButton'>Play again?</button></div>")
     $replayButton.on('click', function() {
@@ -179,7 +223,7 @@ function addReplayButton() {
     $replay.append($replayButton)
 }
 
-// Hides the gameplay containers and shows the end game container
+// Function that hides/shows appropriate containers at game end
 function endGameHideShow() {
     $statsContainer.hide()
 

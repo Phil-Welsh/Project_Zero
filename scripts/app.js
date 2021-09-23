@@ -31,7 +31,7 @@ const snail = {
     snailBoredom: 0,
     boredom: null,
 
-    // Saves name input to object
+// Method that saves name input, makes sure name is valid, and calls functions that display the game/start other counters
     name: () => {
         snailName = $nameInput.val()
         if (snailName.length == 0) {
@@ -51,27 +51,29 @@ const snail = {
             }
         },
 
-    // Hunger counter that increases by 1 every 5 seconds
+    // Function that increases hunger count
     hungerIncrease: () => {
         snail.hunger = setInterval(function() {
-            if (snail.snailHunger >= 10) {
+            if (snail.snailHunger >= 9) {
+                // If hunger limit is reached, it clears all other setIntervals
                 clearInterval(snail.progress)
                 clearInterval(snail.hunger)
                 clearInterval(snail.boredom)
                 clearInterval(snail.sleepiness)
+                // Ends the game and passes the hunger parameter
                 endGame("hunger")
         } else {
             snail.snailHunger += 1
             $hunger.text("Hunger: " + snail.snailHunger)
             snail.appearance()
             }
-        }, 3000)
+        }, 50000)
     },
 
     // Sleepiness counter that increases by 1 every 5 seconds
     sleepinessIncrease: () => {
         snail.sleepiness = setInterval(function() {
-            if (snail.snailSleepiness >= 10) {
+            if (snail.snailSleepiness >= 9) {
                 clearInterval(snail.sleepiness)
                 clearInterval(snail.progress)
                 clearInterval(snail.hunger)
@@ -81,13 +83,13 @@ const snail = {
             snail.snailSleepiness += 1
             $sleepiness.text("Sleepiness: " + snail.snailSleepiness)
             }
-        }, 5000)
+        }, 50000)
     },
 
     // Boredom counter that increases by 1 every 5 seconds
     boredomIncrease: () => {
         snail.boredom = setInterval(function() {
-            if (snail.snailBoredom >= 10) {
+            if (snail.snailBoredom >= 9) {
                 clearInterval(snail.boredom)
                 clearInterval(snail.progress)
                 clearInterval(snail.hunger)
@@ -97,7 +99,7 @@ const snail = {
             snail.snailBoredom += 1
             $boredom.text("Boredom: " + snail.snailBoredom)
             }
-        }, 5000)
+        }, 50000)
     },
 
     // Hunger counter that decreases by 1 every time "Eat" button is clicked
@@ -137,7 +139,7 @@ const snail = {
             var elem = document.getElementById("progressBar")
             elem.style.width = snail.snailProgress + "%"
             }
-            }, 3000)
+            }, 50000)
         },
 
     appearance: () => {

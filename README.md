@@ -1,25 +1,62 @@
-The Oregon Snail
+# Oregon Snail
 
-This game is Phil Welsh's first project for his Fall 2021 Software Engineering Immersive program with General Assembly. Players guide a snail across a dangerous landscape in the hopes of reaching a large stockpile of food.
+Created by: Phil Welsh
 
-User stories:
+## Overview
+
+This game is Phil Welsh's first project for his Fall 2021 Software Engineering Immersive program with General Assembly. Players help a snail across a dangerous landscape in the hopes of reaching a large stockpile of food.
+
+## User stories:
 
 - Player starts at a page where they name their snail.
 
 - After naming, they enter the main game with their snail presented in the middle of the page.
 
-- On the left side is a box displaying hunger, sleepiness, boredom, age, and name.
+- On the left side is a box displaying hunger, sleepiness, boredom, and name.
 
 - On the right side is a box with buttons that allow users to feed the snail, sleep, and play cards.
 
-- Under the snail, there is a colored bar that shows the snail's progress to his destination.
+- Under the snail, there is a colored bar that shows the snail's progress to their destination.
 
-- The progress bar advances an increment every 30 seconds.
+- The progress bar advances %5 at a specified interval.
 
-- Every 30 seconds, the hunger, sleepiness, boredom, and age counters go up by 1.
+- The hunger, sleepiness, boredom counters go up by 1 at a specified interval.
 
-- If any of the counters reach 10 before the progress bar is complete, the snail dies.
+- The picture of the snail starts to fade as the hunger level increases.
 
-- If the snail dies, a dialog pops up stating so, with a button to replay.
+- If any of the counters reach 10 before the progress bar is complete, the snail dies. The user is taken to a page that explains why the snail died, with a button to play again.
 
-- If the snail completes the trip before any of the health/boredom/sleepiness attributes get to 10, then a window congratulating the player appears.
+- If the snail completes the trip before any of the health/boredom/sleepiness attributes get to 10, then a window congratulating the player appears. This window also has a button to play again.
+
+## Technologies Used
+
+- HTML
+- CSS
+- Javascript
+- Github
+
+## Challenges
+
+- I set intervals on many functions in the game. Figuring out how to clear them appropriately took a while.
+
+- At one point I add a new div that needs an event listener. Previously I assigned the new div's event listener at the end of the JS file.
+
+- Hiding/showing elements, and then giving them display properties was challenging.
+
+## Things to improve
+
+#### Code-wise
+
+- There are many functions that call other functions. This may be fine, but currently if one function misbehaves, it breaks the whole game. Also functions cannot be reused as of writing.
+
+#### Design
+
+- Instead of a progress bar, it would be better if the game portrayed the snail moving across the landscape.
+
+- The game is not designed for mobile or small screens currently.
+
+## Future ideas and stretch features
+
+- Create an inventory with food storage and other things that will become depleted as the journey goes on.
+
+- Create challenges that the snail comes across that must be handled appropriately (e.g. "James just reached a river! What should he do?")

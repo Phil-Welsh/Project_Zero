@@ -35,7 +35,7 @@ body {
 #statsContainer {
   display: none;
   overflow-wrap: break-word;
-  max-width: 25%;
+  max-width: 15vw;
 }
 
 #statsLiContainer {

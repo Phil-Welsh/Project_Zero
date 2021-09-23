@@ -85,7 +85,7 @@ const snail = {
             // Calls method to make snail blurrier as it gets hungrier
             snail.appearance()
             }
-        }, 50000)
+        }, 1000)
     },
 
     sleepinessIncrease: () => {
@@ -108,7 +108,7 @@ const snail = {
             snail.snailSleepiness += 1
             $sleepiness.text("Sleepiness: " + snail.snailSleepiness)
             }
-        }, 50000)
+        }, 1000)
     },
 
     boredomIncrease: () => {
@@ -131,7 +131,7 @@ const snail = {
             snail.snailBoredom += 1
             $boredom.text("Boredom: " + snail.snailBoredom)
             }
-        }, 50000)
+        }, 1000)
     },
 
     // Hunger counter that decreases by 1 every time "Eat" button is clicked
@@ -180,7 +180,7 @@ const snail = {
             var elem = document.getElementById("progressBar")
             elem.style.width = snail.snailProgress + "%"
             }
-            }, 50000)
+            }, 1000)
         },
 
     // Method called by hungerIncrease method that makes snail blurrier as it gets hungrier

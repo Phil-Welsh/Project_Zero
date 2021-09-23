@@ -10,7 +10,7 @@ const $hunger = $('#hungerLi')
 const $boredom = $('#boredomLi')
 const $sleepiness = $('#sleepinessLi')
 const $name = $('#nameLi')
-const $statsName = $('#name')
+const $playerName = $('.name')
 const $replay = $('#replay')
 const $statsContainer = $('#statsContainer')
 const $snailContainer = $('#snailContainer')
@@ -48,7 +48,7 @@ const snail = {
 
                 // Sets name for statsContainer
                 $name.text("Name: " + snailName)
-                $statsName.text(snailName)
+                $playerName.text(snailName)
 
                 // Calls methods that start the game
                 snail.hungerIncrease()
@@ -85,7 +85,7 @@ const snail = {
             // Calls method to make snail blurrier as it gets hungrier
             snail.appearance()
             }
-        }, 1000)
+        }, 10000)
     },
 
     sleepinessIncrease: () => {
@@ -101,14 +101,14 @@ const snail = {
                 clearInterval(snail.boredom)
 
                 // Ends the game and passes sleepiness parameter
-                endGame("sleepiness")
+                endGame("exhaustion")
             } else {
 
             // If limit is not reached, add 1 to the count
             snail.snailSleepiness += 1
             $sleepiness.text("Sleepiness: " + snail.snailSleepiness)
             }
-        }, 1000)
+        }, 10000)
     },
 
     boredomIncrease: () => {
@@ -131,7 +131,7 @@ const snail = {
             snail.snailBoredom += 1
             $boredom.text("Boredom: " + snail.snailBoredom)
             }
-        }, 1000)
+        }, 10000)
     },
 
     // Hunger counter that decreases by 1 every time "Eat" button is clicked
@@ -180,7 +180,7 @@ const snail = {
             var elem = document.getElementById("progressBar")
             elem.style.width = snail.snailProgress + "%"
             }
-            }, 1000)
+            }, 10000)
         },
 
     // Method called by hungerIncrease method that makes snail blurrier as it gets hungrier
@@ -216,7 +216,7 @@ function endGame(reason) {
 
 // Function that adds replay button div, gives it ability to reload page, and appends it
 function addReplayButton() {
-    const $replayButton = $("<div><button id = 'replayButton'>Play again?</button></div>")
+    const $replayButton = $("<div><button class = 'btn' id = 'replayButton'>Play again?</button></div>")
     $replayButton.on('click', function() {
         location.reload()
     })

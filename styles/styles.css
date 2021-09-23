@@ -11,12 +11,18 @@ body {
 }
 
 #progressBarBackground {
-  width: 60%;
-  background-color: red;
+  width: 30vw;
+  background-color: orangered;
   border: 3px;
   border-color: black;
   border-style: solid;
   border-radius: 5px;
+}
+
+#nameInput {
+  padding: 3px;
+  border-color: black;
+  border-width: 1px;
 }
 
 #progressBar {
@@ -34,8 +40,8 @@ body {
 #statsContainer {
   display: none;
   overflow-wrap: break-word;
-  max-width: 15vw;
-  padding: 15px;
+  max-width: 10vw;
+  padding-right: 3px;
 }
 
 #statsLiContainer {
@@ -49,12 +55,14 @@ body {
 
 #progressBarContainer {
   display: none;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  padding-top: 10px;
 }
 
 #buttonContainer {
   display: none;
+  width: 12vw;
 }
 
 #buttonLiContainer {
@@ -62,11 +70,10 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding-left: 0;
 }
 
 #nameContainer {
-  padding: 10px;
-  margin: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,8 +87,7 @@ body {
 }
 
 #snail {
-  max-width: 150px;
-  max-height: 150px;
+  width: 15vw;
 }
 
 #endGameContainer {
@@ -98,35 +104,19 @@ body {
 }
 
 .btn {
-  list-style: none;
+  cursor: pointer;
+  border-width: 2px;
+  border-color:black;
+  border-radius: 6px;
+  border-style: solid;
   margin: 3px;
 }
 
-.statsLi {
+li {
   list-style: none;
 }
 
-#eatButton {
-  cursor: pointer;
-  border: 1.5px;
-  border-color: black;
-  border-radius: 3px;
-  border-style: solid;
-  color: black;
-}
-
-#playCardsButton {
-  cursor: pointer;
-  border: 1.5px;
-  border-color: black;
-  border-radius: 3px;
-  border-style: solid;
-}
-
-#setUpCampButton {
-  cursor: pointer;
-  border: 1.5px;
-  border-color: black;
-  border-radius: 3px;
-  border-style: solid;
+#progressBarNote {
+  margin-block-end: 0;
+  margin-block-start: 0;
 }

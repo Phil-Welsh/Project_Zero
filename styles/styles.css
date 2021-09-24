@@ -121,3 +121,18 @@ li {
   justify-content: center;
   text-align: center;
 }
+
+@media only screen and (max-width: 800px) {
+
+  #snail {
+    width: 30vw;
+  }
+
+  #buttonContainer {
+    width: 24vw;
+  }
+
+  #statsContainer {
+    max-width: 20vw;
+  }
+}

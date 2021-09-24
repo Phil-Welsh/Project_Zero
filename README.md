@@ -6,6 +6,10 @@ Created by: Phil Welsh
 
 This game is Phil Welsh's first project for his Fall 2021 Software Engineering Immersive program with General Assembly. Players help a snail across a dangerous landscape in the hopes of reaching a large stockpile of food.
 
+## Wireframes
+
+Wireframe images are in the wireframes folder in this repo.
+
 ## User stories:
 
 - Player starts at a page where they name their snail.
@@ -42,6 +46,8 @@ This game is Phil Welsh's first project for his Fall 2021 Software Engineering I
 - At one point I add a new div that needs an event listener. Previously I assigned the new div's event listener at the end of the JS file.
 
 - Hiding/showing elements, and then giving them display properties was challenging.
+
+- Forgot to put "defer" in the javascript src at the top of the HTML. This bug took a long time to figure out.
 
 ## Things to improve
 

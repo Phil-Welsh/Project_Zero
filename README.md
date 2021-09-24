@@ -47,6 +47,8 @@ Wireframe images are in the wireframes folder in this repo.
 
 - Hiding/showing elements, and then giving them display properties was challenging.
 
+- Chrome has some default CSS settings that threw me off.
+
 ## Triumphs
 
 - The game rendering turned out really well. The background image is great, and the empty top portion allowed me to create the game there.
@@ -78,3 +80,7 @@ Wireframe images are in the wireframes folder in this repo.
 - Create challenges that the snail comes across that must be handled appropriately (e.g. "James just reached a river! What should he do?")
 
 - Add an animation for when the snail is eating, sleeping, or playing cards.
+
+## Final thoughts
+
+I think I could have set the bar higher, but it turned out well as a first project.

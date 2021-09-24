@@ -43,11 +43,15 @@ Wireframe images are in the wireframes folder in this repo.
 
 - I set intervals on many functions in the game. Figuring out how to clear them appropriately took a while.
 
-- At one point I add a new div that needs an event listener. Previously I assigned the new div's event listener at the end of the JS file.
+- The replay button is a div created by a Javascript function. This button needs an event listener, so figuring out how to add an event listener to a newly appended button was a challenge.
 
 - Hiding/showing elements, and then giving them display properties was challenging.
 
-- Forgot to put "defer" in the javascript src at the top of the HTML. This bug took a long time to figure out.
+## Triumphs
+
+- The game rendering turned out really well. The background image is great, and the empty top portion allowed me to create the game there.
+
+- With the extra time, I was able to clean the code and comment it comprehensively.
 
 ## Things to improve
 
@@ -61,8 +65,14 @@ Wireframe images are in the wireframes folder in this repo.
 
 - The game is not designed for mobile or small screens currently.
 
+- Currently the snail starts to get blurrier as it gets hungrier. This could probably be animated better.
+
+- Players can repeatedly click the buttons. In the future, it would be better if there was a delay while the snail ate, slept, or played cards.
+
 ## Future ideas and stretch features
 
 - Create an inventory with food storage and other things that will become depleted as the journey goes on.
 
 - Create challenges that the snail comes across that must be handled appropriately (e.g. "James just reached a river! What should he do?")
+
+- Add an animation for when the snail is eating, sleeping, or playing cards.

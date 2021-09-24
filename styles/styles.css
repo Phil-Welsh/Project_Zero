@@ -45,6 +45,16 @@ body {
   width: 60%;
 }
 
+footer {
+  text-align: left;
+  position: absolute;
+  bottom: 0;
+  color: white;
+  font-size: 10px;
+  width: 100%;
+  background-color: darkgreen;
+}
+
 li {
   list-style: none;
 }

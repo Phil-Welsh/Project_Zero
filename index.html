@@ -13,18 +13,22 @@
 </head>
 <body style="background-image: url('assets/background.jpeg')">
 
+    <!-- Container for title and game description that never leaves the DOM -->
     <div id = "titleContainer">
         <h1>Oregon Snail</h1>
         <h3>Help your snail across a dangerous landscape to reach a stockpile of food!</h3>
     </div>
 
+    <!-- Container for the name input field and button that disappear once button is clicked -->
     <div id = "nameContainer">
         <input type="text" id = "nameInput">
         <button class= "btn" id = "nameInputButton">Let's go!</button>
     </div>
 
+    <!-- Container for the left hand stats container, middle snail image, and right side buttons -->
     <div id = "centerPiece">
 
+        <!-- Container for the left side stats and explanation of stats -->
         <div id = "statsContainer">
             <p>Make sure none of these get to 10 or <span class = "name"></span> dies!</p>
             <ul id = "statsLiContainer">
@@ -35,10 +39,12 @@
             </ul>
         </div>
 
+        <!-- Container for the snail image -->
         <div id = "snailContainer">
             <img id = "snail" src = "assets/snail.png">
         </div>
 
+        <!-- Container for the buttons and explanation on the right side of the page -->
         <div id = "buttonContainer">
             <p>Use these buttons to keep <span class = "name"></span> fed, energized, and entertained!</p>
             <ul id = "buttonLiContainer">
@@ -50,10 +56,12 @@
 
     </div>
 
+    <!-- Container for the end game object that shows after game is complete -->
     <div id = "endGameContainer">
         <div id = "replay"></div>
     </div>
 
+    <!-- Container for the progress bar that appears at the bottom of the page once game starts, then disappears at the end -->
     <div id = "progressBarContainer">
         <p id = "progressBarNote">This bar shows your progress!</p>
         <div id = "progressBarBackground">

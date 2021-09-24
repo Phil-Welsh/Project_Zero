@@ -85,7 +85,7 @@ const snail = {
             // Calls method to make snail blurrier as it gets hungrier
             snail.appearance()
             }
-        }, 10000)
+        }, 3000)
     },
 
     sleepinessIncrease: () => {
@@ -108,7 +108,7 @@ const snail = {
             snail.snailSleepiness += 1
             $sleepiness.text("Sleepiness: " + snail.snailSleepiness)
             }
-        }, 10000)
+        }, 6000)
     },
 
     boredomIncrease: () => {
@@ -180,7 +180,7 @@ const snail = {
             var elem = document.getElementById("progressBar")
             elem.style.width = snail.snailProgress + "%"
             }
-            }, 10000)
+            }, 8000)
         },
 
     // Method called by hungerIncrease method that makes snail blurrier as it gets hungrier

@@ -67,6 +67,8 @@ Wireframe images are in the wireframes folder in this repo.
 
 - Currently the snail starts to get blurrier as it gets hungrier. This could probably be animated better.
 
+- Would be better if the hunger/sleepiness/boredom stats were bars or animated somehow, rather than just numbers.
+
 - Players can repeatedly click the buttons. In the future, it would be better if there was a delay while the snail ate, slept, or played cards.
 
 ## Future ideas and stretch features
